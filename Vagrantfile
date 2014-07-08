@@ -24,19 +24,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # accessing "localhost:8080" will access port 80 on the guest machine.
 
   #For Grunt Serve
-  config.vm.network :forwarded_port, guest: 9000, host: 9071
+  config.vm.network :forwarded_port, guest: 9000, host: 9000
   # For live-reload in grunt
-  config.vm.network :forwarded_port, guest: 35729, host: 35744 
+  config.vm.network :forwarded_port, guest: 35729, host: 35729 
 
   # Enable Berkshelf for Chef. Make sure the plugin is installed!
   # $ vagrant plugin install vagrant-berkshelf --plugin-version '>= 2.0.1'
   config.berkshelf.enabled = true
 
 
-   config.vm.provision "shell"
+   config.vm.provision "shell",
 	path: "chef-install.sh"
    config.vm.provision :chef_solo do |chef|
-     chef.cookbooks_path = "."
+     #chef.cookbooks_path = "."
      chef.add_recipe "codetalker"
      chef.log_level = :debug
      chef.verbose_logging = true
