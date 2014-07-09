@@ -5,6 +5,5 @@ description      "Installs/Configures codetalker"
 name			 "codetalker"
 version          "0.1"
 
-# depends 'apt'
 depends 'nodejs'
-
+depends 'npm'

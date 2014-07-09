@@ -18,8 +18,11 @@ git node[:codetalker][:deploy_dir] do
    action :sync
 end
 
-# #Install Nodejs from PPA
+# #Install Nodejs and npm
 include_recipe "nodejs" 
+
+npm_package "grunt-cli@>0.4.5"
+npm_package "bower@>1.3.2"
 
 # apt_repository 'nodejs' do
 #   uri          'http://ppa.launchpad.net/chris-lea/node.js/ubuntu/'
