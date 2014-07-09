@@ -18,14 +18,18 @@ git node[:codetalker][:deploy_dir] do
    action :sync
 end
 
-#Install Nodejs from PPA
-apt_repository 'nodejs' do
-  uri          'http://ppa.launchpad.net/chris-lea/node.js/ubuntu/'
-  distribution 'trusty'
-  components   ['main']
-  keyserver    'keyserver.ubuntu.com'
-  key          'C300EE8C'
-end
+# #Install Nodejs from PPA
+include_recipe "nodejs" 
+
+# apt_repository 'nodejs' do
+#   uri          'http://ppa.launchpad.net/chris-lea/node.js/ubuntu/'
+#   distribution 'trusty'
+#   components   ['main']
+#   keyserver    'keyserver.ubuntu.com'
+#   key          '87374F5D'
+# end
+# recipe[apt]
+
 
 # file node[:codetalker][:librarian_script] do
 # 	mode "700"
