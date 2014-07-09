@@ -37,7 +37,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	path: "chef-install.sh"
    config.vm.provision :chef_solo do |chef|
      #chef.cookbooks_path = "."
-     chef.add_recipe "codetalker"
+     #TODO consolidate to a role?
+     chef.add_recipe "codetalker::default"
+     chef.add_recipe "codetalker::deploy"
+     chef.add_recipe "codetalker::start"
      chef.log_level = :debug
      chef.verbose_logging = true
   end 
