@@ -8,14 +8,14 @@ end
 #
 execute "Install Bower client-side dependencies" do
   command "bower install --quiet" 
-  environment ({'HOME' => '#{node[:codetalker][:deploy_dir]}'})
+  environment ({'HOME' => node[:codetalker][:user_home] })
   user node[:codetalker][:user]
   cwd  node[:codetalker][:deploy_dir]
 end
 
 execute "Install npm server side dependencies and build the system" do
   command "npm install"
-  environment ({'HOME' => '#{node[:codetalker][:deploy_dir]}'})
+  environment ({'HOME' => node[:codetalker][:user_home] })
   user node[:codetalker][:user]
   cwd  node[:codetalker][:deploy_dir]
 end

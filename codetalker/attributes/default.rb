@@ -1,5 +1,6 @@
 default[:codetalker][:user]		= "codetalker"
 default[:codetalker][:group]		= "codetalker"
+default[:codetalker][:user_home]    = '/home/codetalker'
 default[:codetalker][:deploy_dir]		= "/var/www/codetalker"
 default[:codetalker][:cache_dir]		= "/var/cache/codetalker"
 default[:codetalker][:git_repo]			= "https://github.com/18F/codetalker.git"
