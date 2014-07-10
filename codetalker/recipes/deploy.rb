@@ -5,7 +5,6 @@ git node[:codetalker][:deploy_dir] do
    action :sync
 end
 
-#
 execute "Install Bower client-side dependencies" do
   command "bower install --quiet" 
   environment ({'HOME' => node[:codetalker][:user_home] })
@@ -18,4 +17,11 @@ execute "Install npm server side dependencies and build the system" do
   environment ({'HOME' => node[:codetalker][:user_home] })
   user node[:codetalker][:user]
   cwd  node[:codetalker][:deploy_dir]
+end
+
+execute "Start the nodejs server as a daemon" do
+  command "pm2 restart -u #{node[:codetalker][:user]} --name codetalker server.js "
+  environment ({'HOME' => node[:codetalker][:user_home] })
+  user node[:codetalker][:user]
+  cwd node[:codetalker][:deploy_dir]
 end
