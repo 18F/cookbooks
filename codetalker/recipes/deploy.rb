@@ -20,7 +20,7 @@ execute "Install npm server side dependencies and build the system" do
 end
 
 execute "Start the nodejs server as a daemon" do
-  command "pm2 restart -u #{node[:codetalker][:user]} --name codetalker server.js "
+  command "pm2 start -u #{node[:codetalker][:user]} --name codetalker server.js "
   environment ({'HOME' => node[:codetalker][:user_home] })
   user node[:codetalker][:user]
   cwd node[:codetalker][:deploy_dir]
