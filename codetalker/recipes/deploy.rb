@@ -24,4 +24,13 @@ execute "Start the nodejs server as a daemon" do
   environment ({'HOME' => node[:codetalker][:user_home] })
   user node[:codetalker][:user]
   cwd node[:codetalker][:deploy_dir]
+  not_if "pm2 describe codetalker"
+end
+
+execute "Restart the nodejs server" do
+  command "pm2 restart codetalker"
+  environment ({'HOME' => node[:codetalker][:user_home] })
+  user node[:codetalker][:user]
+  cwd node[:codetalker][:deploy_dir]
+  only_if "pm2 describe codetalker"
 end

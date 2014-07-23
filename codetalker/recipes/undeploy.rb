@@ -3,4 +3,5 @@ execute "Stop the nodejs daemon" do
   environment ({'HOME' => node[:codetalker][:user_home] })
   user node[:codetalker][:user]
   cwd node[:codetalker][:deploy_dir]
+  only_if "pm2 describe codetalker"
 end
